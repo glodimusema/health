@@ -1,0 +1,151 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateTconsNeonatologieTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tcons_neonatologie', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('refHospi')->constrained('thospitalisation')->restrictOnUpdate()->restrictOnDelete();
+            $table->string('nomPere',100)->nullable();
+            $table->string('nomMere',100)->nullable();
+            $table->string('adresse',100)->nullable();
+            $table->string('telephone',100)->nullable();
+            $table->date('dateAcouchement',100)->nullable();
+            $table->string('heureAcouchemnt',100)->nullable();
+            $table->date('dateTransfert',100)->nullable();
+            $table->string('heureTransfert',100)->nullable();
+            $table->date('dateAdmission',100)->nullable();
+            $table->string('heureAdmission',100)->nullable();
+            $table->string('motifAppel',100)->nullable();
+            $table->integer('ageMere')->nullable();
+            $table->double('poidsMere')->nullable();
+            $table->double('tailleMere')->nullable();
+            $table->string('gastrite',100)->nullable();
+            $table->string('partie',100)->nullable();
+            $table->string('avortement',100)->nullable();
+            $table->string('deces',100)->nullable();
+            $table->date('dateTransfert2',100)->nullable();
+            $table->string('gestite',100)->nullable();
+            $table->string('groupeSanguin',100)->nullable();
+            $table->string('antecedante',100)->nullable();
+            $table->string('DDR',100)->nullable();
+            $table->string('DRA',100)->nullable();
+            $table->integer('nbrCPN')->nullable();
+            $table->string('fiv',100)->nullable();
+            $table->string('VAT',100)->nullable();
+            $table->string('DPA',100)->nullable();
+            $table->string('SP',200)->nullable();
+            $table->string('acideFolique',100)->nullable();
+            $table->string('vih',100)->nullable();
+            $table->string('agHbs',100)->nullable();
+            $table->string('hepatheC',100)->nullable();
+            $table->string('syphilis',100)->nullable();
+            $table->string('toxo',100)->nullable();
+            $table->string('rubeole',100)->nullable();
+            $table->string('mebesdazole',100)->nullable();
+            $table->string('autres',100)->nullable();
+            $table->string('HTA',100)->nullable();
+            $table->string('diabet',100)->nullable();
+            $table->string('obesite',100)->nullable();
+            $table->string('urogenital',100)->nullable();
+            $table->string('paludisme',100)->nullable();
+            $table->string('toxenule',100)->nullable();
+            $table->integer('nbrECHO')->nullable();
+            $table->string('protocole',100)->nullable();
+            $table->string('DPASebuecho',100)->nullable();
+            $table->string('traitemesvats',100)->nullable();
+            $table->date('datenaissance')->nullable();
+            $table->string('Hnaissance',100)->nullable();
+            $table->string('termeSeonDDR',100)->nullable();
+            $table->string('termeSeonEcho',100)->nullable();
+            $table->string('termeSeionScore',100)->nullable();
+            $table->string('RPM',100)->nullable();
+            $table->string('notionFievre',100)->nullable();
+            $table->string('sifievreResultat',100)->nullable();
+            $table->string('aspestDuLA',100)->nullable();            
+            $table->string('autresNEO',100)->nullable();
+            $table->string('autresAccouchement',100)->nullable();
+            $table->string('dureeTravail',100)->nullable();
+            $table->string('presentation',100)->nullable();
+            $table->string('modeAcouchement',100)->nullable();
+            $table->string('peridurable',100)->nullable();
+            $table->string('cesarieneIndicat',100)->nullable();
+            $table->string('tempsMaternel',100)->nullable();
+            $table->string('carticotherapie',100)->nullable();
+            $table->string('surfaceMg',100)->nullable();
+            $table->string('MedicamentRecus',100)->nullable();
+            $table->string('presencePediatre',100)->nullable();
+            $table->string('RealiserPar',100)->nullable();
+            $table->string('parDr',100)->nullable();
+            $table->string('sexe',100)->nullable();
+            $table->string('poids',100)->nullable();
+            $table->double('taille_2')->nullable();
+            $table->string('pc',100)->nullable();
+            $table->string('pt',100)->nullable();
+            $table->string('saOxygeneNeo',100)->nullable();
+            $table->string('glicemie',100)->nullable();
+            $table->string('apgarm1',100)->nullable();
+            $table->string('apgarm5',100)->nullable();
+            $table->string('apgarm10',100)->nullable();
+            $table->string('criM1',100)->nullable();
+            $table->string('criM5',100)->nullable();
+            $table->string('reanimationNeo',100)->nullable();
+            $table->string('duree',100)->nullable();
+            $table->string('cyanose',100)->nullable();
+            $table->string('abdoman',100)->nullable();
+            $table->string('frNeo',100)->nullable();
+            $table->string('tempeNeo',100)->nullable();
+            $table->string('trcNeo',100)->nullable();
+            $table->string('conjonctivebaion',100)->nullable();
+            $table->string('membres',100)->nullable();
+            $table->string('examenNerologique',100)->nullable();
+            $table->double('Fc_2')->nullable();
+            $table->string('organes_genitaux',100)->nullable();
+            $table->string('ailleurs',100)->nullable();
+            $table->string('coeurPoumon',100)->nullable();
+            $table->string('ban',100)->nullable();
+            $table->string('tic',100)->nullable();
+            $table->string('tsc',100)->nullable();
+            $table->string('enfance',100)->nullable();
+            $table->string('balenceMautxiphoide',100)->nullable();
+            $table->string('scareSylverman',100)->nullable();
+            $table->string('vigilance',100)->nullable();
+            $table->string('attitude',100)->nullable();
+            $table->string('sd',100)->nullable();
+            $table->string('criNeo',100)->nullable();
+            $table->string('echarpe',100)->nullable();
+            $table->string('maro',100)->nullable();
+            $table->string('matiliste_spautaue',100)->nullable();
+            $table->string('talonOreilles',100)->nullable();
+            $table->string('grosping',100)->nullable();
+            $table->string('relativite',100)->nullable();
+            $table->string('actif',100)->nullable();
+            $table->string('conclusionNeo',100)->nullable();
+            $table->string('conclusionTenarNeo',100)->nullable();
+            $table->string('auther',100)->nullable();
+            $table->string('deleted')->default('NON');
+            $table->string('author_deleted')->default('user'); 
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tcons_neonatologie');
+    }
+}

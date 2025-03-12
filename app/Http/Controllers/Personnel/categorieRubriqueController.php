@@ -1,0 +1,123 @@
+<?php
+
+namespace App\Http\Controllers\Personnel;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use App\Models\Personnel\{tperso_categorie_rubrique};
+use App\Traits\{GlobalMethod,Slug};
+use DB;
+
+use App\User;
+use App\Message;
+
+class tperso_categorie_rubriqueController extends Controller
+{
+    use GlobalMethod;
+    use Slug;
+    public function index(Request $request)
+    {
+        //
+        
+        if (!is_null($request->get('query'))) {
+            # code...
+            $query = $this->Gquery($request);
+            $data = DB::table('tperso_categorie_rubrique')->select("tperso_categorie_rubrique.id","tperso_categorie_rubrique.name_categorie_rubrique","tperso_categorie_rubrique.created_at")->where('name_categorie_rubrique', 'like', '%'.$query.'%')
+            ->orWhere('name_categorie_rubrique', 'like', '%'.$query.'%')
+            ->orderBy("tperso_categorie_rubrique.id", "desc")
+            ->paginate(10);
+
+            return response()->json([
+                'data'  => $data,
+            ]);
+           
+
+        }
+        else{
+            $data = DB::table('tperso_categorie_rubrique')
+            ->select("tperso_categorie_rubrique.id","tperso_categorie_rubrique.name_categorie_rubrique","tperso_categorie_rubrique.created_at")
+            ->orderBy("tperso_categorie_rubrique.id", "desc")->paginate(10);
+            return response()->json([
+                'data'  => $data,
+            ]);
+        }
+    }
+
+
+    function fetch_dopdown_2()
+    {
+        $data = DB::table('tperso_categorie_rubrique')
+        ->select("tperso_categorie_rubrique.id","tperso_categorie_rubrique.name_categorie_rubrique","tperso_categorie_rubrique.created_at")->orderBy("id", "desc")->paginate(10);
+        return response()->json([
+            'data'  => $data
+        ]);
+
+    }
+
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        
+        if ($request->id !='') 
+        {
+ 
+            $data = tperso_categorie_rubrique::where("id", $request->id)->update([
+                'name_categorie_rubrique' =>  $request->name_categorie_rubrique
+            ]);
+            return response()->json([
+                'data'  =>  "Modification  avec succès!!!"
+            ]);
+        }
+        else
+        {
+     
+            $data = tperso_categorie_rubrique::create([
+
+                'name_categorie_rubrique' =>$request->name_categorie_rubrique
+            ]);
+
+            return response()->json([
+                'data'  =>  "Insertion avec succès!!!",
+            ]);
+        }
+    }
+
+    
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+        $data = tperso_categorie_rubrique::where('id', $id)->get();
+        return response()->json(['data' => $data]);
+    }
+
+   
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+        $data = tperso_categorie_rubrique::where('id', $id)->delete();
+        return $this->msgJson('Suppression avec succès!!!');
+    }
+
+
+}

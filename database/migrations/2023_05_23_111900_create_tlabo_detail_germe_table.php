@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateTlaboDetailGermeTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {        
+        Schema::create('tlabo_detail_germe', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('refResultatBacterie')->constrained('tlabo_resultat_bacteriologie')->restrictOnUpdate()->restrictOnDelete();
+            $table->foreignId('refGerme')->constrained('tlabo_germe')->restrictOnUpdate()->restrictOnDelete();    
+            $table->string('author',50);
+            $table->string('deleted')->default('NON');
+            $table->string('author_deleted')->default('user');  
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tlabo_detail_germe');
+    }
+}
